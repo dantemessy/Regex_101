@@ -26,6 +26,7 @@ let reg ;
 
 // using * for match zero or more times ex [go*] in 'gulf gool' return ['g','goo's];
 
+// using ? as possible existence match
 
 // using ? to set lazy search, the default is greedy;
 // sample = 'titanic';
@@ -39,11 +40,13 @@ let reg ;
 // using \d to match digits 0-9 ;
 // using \D to match anything except numbers 0-9 ;
 
-//using curly braces {number of time the previous match can match o_0 } or {min , max}
+//using curly braces {number of time the previous match can match o_0 ls} or {min , max}
 
 // using \s to match whitespace which include the \t, \n, \r, and space characters.
 // using \S to match non-whitespace ;
-sample = '  dan dan ';
-reg = /  */g
+
+// using positive (?=) or negative(?!) lookahead to match without return;
+sample = 'abcdd12';
+reg = /(?=\w{5})(?=\D*\d{2})/g
 let result = sample.match(reg);
 console.log(result);
